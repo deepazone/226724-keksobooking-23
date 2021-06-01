@@ -3,9 +3,9 @@ function getRandomNumber(min, max, decimal) {
     return 'неверные параметры';
   }
 
-  const randomNumber = (Math.random() * (max - min) + min).toFixed(parseInt(decimal));
+  const randomNumber = (Math.random() * (max - min) + min).toFixed(Number(decimal));
 
   return randomNumber;
 }
 
-getRandomNumber(100, 200, 5)
+getRandomNumber(100, 200, 5);
