@@ -1,13 +1,11 @@
-
 function getRandomNumber(min, max, decimal) {
   if (min >= max || min < 0 || max < 0) {
     return 'неверные параметры';
   }
 
-  const number = (Math.random() * (max - min) + min).toFixed(decimal);
+  const randomNumber = (Math.random() * (max - min) + min).toFixed(parseInt(decimal));
 
-  return number;
+  return randomNumber;
 }
 
-console.log(getRandomNumber(20, 400.223, 10));
-
+getRandomNumber(100, 200, 5)
