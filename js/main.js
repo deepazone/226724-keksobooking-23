@@ -6,7 +6,7 @@ const getRandomNumberWhole = (min, max) => {
   const randomNumber = Math.floor(Math.random() * (max - min) + min);
 
   return randomNumber;
-}
+};
 
 
 const getRandomNumber = (min, max, decimal) => {
@@ -112,8 +112,10 @@ const createOffer = () => {
   };
 };
 
-const SIMILAR_OFFER_COUNT = 10;
+const createOffers = (SIMILAR_OFFER_COUNT) => {
+  const offers = new Array(SIMILAR_OFFER_COUNT).fill(null).map(() => createOffer());
 
-const similarOffer = new Array(SIMILAR_OFFER_COUNT).fill(null).map(() => createOffer());
+  return offers;
+};
 
-console.log(similarOffer);
+console.log(createOffers(10));
