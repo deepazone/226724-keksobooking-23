@@ -112,10 +112,12 @@ const createOffer = () => {
   };
 };
 
-const createOffers = (SIMILAR_OFFER_COUNT) => {
-  const offers = new Array(SIMILAR_OFFER_COUNT).fill(null).map(() => createOffer());
+const SIMILAR_OFFER_COUNT = 10;
+
+const createOffers = (count) => {
+  const offers = new Array(count).fill(null).map(() => createOffer());
 
   return offers;
 };
 
-console.log(createOffers(10));
+createOffers(SIMILAR_OFFER_COUNT);
