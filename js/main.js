@@ -9,5 +9,3 @@ const createOffers = (count) => {
 };
 
 createOffers(SIMILAR_OFFER_COUNT);
-
-console.log(createOffers());
