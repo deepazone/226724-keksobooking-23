@@ -16,6 +16,14 @@ const TYPES = [
   'hotel',
 ];
 
+const HOUSING_TYPES = {
+  palace: 'Дворец',
+  flat: 'Квартира',
+  house: 'Дом',
+  bungalow: 'Бунгало',
+  hotel: 'Отель',
+};
+
 const CHECKINS = [
   '12:00',
   '13:00',
@@ -66,12 +74,21 @@ const getRandomItems = (items, count) => {
   return shuffledItems.slice(0, count);
 };
 
+const getRandomAvatar = () => {
+  const number = getRandomNumberWhole(1, 10);
+
+  if(number < 10) {
+    return `img/avatars/user0${number}.png`;
+  } else {
+    return `img/avatars/user${number}.png`;
+  }
+};
 
 const createOffer = () => {
   const cords = createLocation();
   return {
     author: {
-      avatar: `img/avatars/user/0${getRandomNumberWhole(1, 8)}.png`,
+      avatar: getRandomAvatar(),
     },
     offer: {
       title:  getRandomArrayElement(TITLES),
@@ -90,7 +107,10 @@ const createOffer = () => {
       lat: cords.lat,
       lng: cords.lng,
     },
-  };
-};
 
+  };
+
+};
 export {createOffer};
+export {HOUSING_TYPES};
+
