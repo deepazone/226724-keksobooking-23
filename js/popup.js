@@ -34,8 +34,9 @@ const renderPopup = ({author: {avatar}, offer: {title, address, price, type, roo
 
   popupElement.querySelector('.popup__description').textContent = description;
   const photosList = popupElement.querySelector('.popup__photos');
+  console.log(photosList)
   const photoElement = photosList.querySelector('.popup__photo');
-  photos.map((src) => {
+  photos.forEach((src) => {
     const photo = photoElement.cloneNode(true);
     photo.src = src;
     photosList.appendChild(photo);
