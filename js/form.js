@@ -1,3 +1,5 @@
+import {formDisabled, formActive} from './util.js';
+
 // Создаем объекты для фильтрации зависимости типа от цены
 
 const OfferType = {
@@ -63,3 +65,6 @@ adFormNode.addEventListener('change', (evt) => {
     }
   }
 });
+
+formDisabled();
+formActive();

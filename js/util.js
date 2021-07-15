@@ -20,16 +20,16 @@ const getRandomNumber = (min, max, decimal) => {
 };
 
 const formDisabled = (form, disabledClass) => {
-  for (let i = 0; i < form.length; i++) {
-    form[i].setAttribute('disabled', 'disabled');
+  for (let id = 0; id < form.length; id++) {
+    form[id].setAttribute('disabled', 'disabled');
   }
 
   form.classList.add(disabledClass);
 };
 
 const formActive = (form, disabledClass) => {
-  for (let i = 0; i < form.length; i++) {
-    form[i].removeAttribute('disabled');
+  for (let id = 0; id < form.length; id++) {
+    form[id].removeAttribute('disabled');
   }
 
   form.classList.remove(disabledClass);
