@@ -1,4 +1,4 @@
-import {getRandomNumberWhole, getRandomNumber} from './util.js';
+import {getRandomNumberWhole, getRandomNumber, formDisabled, formActive} from './util.js';
 
 const TITLES = [
   'Восхитительный дворец',
