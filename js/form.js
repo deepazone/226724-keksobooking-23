@@ -1,3 +1,5 @@
+import {formDisabled, formActive} from './util.js';
+
 // Создаем объекты для фильтрации зависимости типа от цены
 
 const OfferType = {
@@ -63,3 +65,21 @@ adFormNode.addEventListener('change', (evt) => {
     }
   }
 });
+
+//логика отключения формы
+
+const loadPage = {
+  load: false,
+};
+
+const mapFilters = document.querySelector('.map__filters');
+const addForm = document.querySelector('.ad-form');
+
+if(loadPage.load === false) {
+  formDisabled(mapFilters, 'map__filters--disabled');
+  formDisabled(addForm, 'ad-form--disabled');
+} else {
+  formActive(mapFilters, 'map__filters--disabled');
+  formActive(addForm, 'ad-form--disabled');
+}
+

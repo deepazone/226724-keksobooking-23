@@ -19,5 +19,20 @@ const getRandomNumber = (min, max, decimal) => {
   return randomNumber;
 };
 
+const formDisabled = (form, disabledClass) => {
+  for (let id = 0; id < form.length; id++) {
+    form[id].setAttribute('disabled', 'disabled');
+  }
 
-export {getRandomNumberWhole, getRandomNumber};
+  form.classList.add(disabledClass);
+};
+
+const formActive = (form, disabledClass) => {
+  for (let id = 0; id < form.length; id++) {
+    form[id].removeAttribute('disabled');
+  }
+
+  form.classList.remove(disabledClass);
+};
+
+export {getRandomNumberWhole, getRandomNumber, formDisabled, formActive};
