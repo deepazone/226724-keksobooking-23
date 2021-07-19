@@ -69,7 +69,7 @@ adFormNode.addEventListener('change', (evt) => {
 //логика отключения формы
 
 const loadPage = {
-  load: false,
+  load: true,
 };
 
 const mapFilters = document.querySelector('.map__filters');
@@ -83,3 +83,11 @@ if(loadPage.load === false) {
   formActive(addForm, 'ad-form--disabled');
 }
 
+//фильтрация по времени заезда-выезда
+const timeIn = document.querySelector('#timein');
+const timeOut = document.querySelector('#timeout');
+
+const changeTime = (time, value) => time.value = value;
+
+timeIn.addEventListener('change', () => changeTime(timeOut, timeIn.value));
+timeOut.addEventListener('change', () => changeTime(timeIn, timeOut.value));
