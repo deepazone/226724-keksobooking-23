@@ -25,6 +25,9 @@ const numberOfSeats = document.querySelector('#capacity');
 const adFormNode = document.querySelector('.ad-form');
 const priceNode = adFormNode.querySelector('#price');
 const typeNode = adFormNode.querySelector('#type');
+const timeInNode = document.querySelector('#timein');
+const timeOutNode = document.querySelector('#timeout');
+
 
 // Валидация по количеству мест относительно комнат
 
@@ -63,6 +66,16 @@ adFormNode.addEventListener('change', (evt) => {
       priceNode.placeholder = price;
       break;
     }
+    case timeInNode.name: {
+      timeInNode.value = value;
+      timeOutNode.value = value;
+      break;
+    }
+    case timeOutNode.name: {
+      timeOutNode.value = value;
+      timeInNode.value = value;
+      break;
+    }
   }
 });
 
@@ -82,12 +95,3 @@ if(loadPage.load === false) {
   formActive(mapFilters, 'map__filters--disabled');
   formActive(addForm, 'ad-form--disabled');
 }
-
-//фильтрация по времени заезда-выезда
-const timeIn = document.querySelector('#timein');
-const timeOut = document.querySelector('#timeout');
-
-const changeTime = (time, value) => time.value = value;
-
-timeIn.addEventListener('change', () => changeTime(timeOut, timeIn.value));
-timeOut.addEventListener('change', () => changeTime(timeIn, timeOut.value));
