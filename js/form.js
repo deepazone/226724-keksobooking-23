@@ -25,6 +25,9 @@ const numberOfSeats = document.querySelector('#capacity');
 const adFormNode = document.querySelector('.ad-form');
 const priceNode = adFormNode.querySelector('#price');
 const typeNode = adFormNode.querySelector('#type');
+const timeInNode = document.querySelector('#timein');
+const timeOutNode = document.querySelector('#timeout');
+
 
 // Валидация по количеству мест относительно комнат
 
@@ -63,13 +66,23 @@ adFormNode.addEventListener('change', (evt) => {
       priceNode.placeholder = price;
       break;
     }
+    case timeInNode.name: {
+      timeInNode.value = value;
+      timeOutNode.value = value;
+      break;
+    }
+    case timeOutNode.name: {
+      timeOutNode.value = value;
+      timeInNode.value = value;
+      break;
+    }
   }
 });
 
 //логика отключения формы
 
 const loadPage = {
-  load: false,
+  load: true,
 };
 
 const mapFilters = document.querySelector('.map__filters');
@@ -82,4 +95,3 @@ if(loadPage.load === false) {
   formActive(mapFilters, 'map__filters--disabled');
   formActive(addForm, 'ad-form--disabled');
 }
-
