@@ -20,42 +20,22 @@ const offerTypeToPrice = {
 
 // Находим все для валидации
 
-const roomNumber = document.querySelector('#room_number');
-const numberOfSeats = document.querySelector('#capacity');
+//const roomNumber = document.querySelector('#room_number');
+//const numberOfSeats = document.querySelector('#capacity');
 const adFormNode = document.querySelector('.ad-form');
 const priceNode = adFormNode.querySelector('#price');
 const typeNode = adFormNode.querySelector('#type');
 const timeInNode = document.querySelector('#timein');
 const timeOutNode = document.querySelector('#timeout');
+const roomNumberNode = document.querySelector('#room_number');
+const capacityNode = adFormNode.querySelector('#capacity');
 
-
-// Валидация по количеству мест относительно комнат
-
-const countRoomsAndSeats = () => {
-  const roomNumberOption = roomNumber.options[roomNumber.selectedIndex].value;
-  const numberOfSeatsOption = numberOfSeats.options[numberOfSeats.selectedIndex].value;
-
-  if (numberOfSeatsOption <= roomNumberOption) {
-    numberOfSeats.setCustomValidity('');
-  } else {
-    numberOfSeats.setCustomValidity('Количество мест должно быть равно или меньше количества комнат!');
-  }
-
-  numberOfSeats.reportValidity();
-
-  if ((numberOfSeatsOption !== '0' && roomNumberOption === '100') || (numberOfSeatsOption === '0' && roomNumberOption !== '100')) {
-    roomNumber.setCustomValidity('100 комнат не для гостей!');
-  } else {
-    roomNumber.setCustomValidity('');
-  }
-
-  roomNumber.reportValidity();
+const roomsToCapacities = {
+  1: [1],
+  2: [1, 2],
+  3: [1, 2, 3],
+  100: [0],
 };
-
-roomNumber.addEventListener('change', () => countRoomsAndSeats());
-numberOfSeats.addEventListener('change', () => countRoomsAndSeats());
-
-// Валидация по типу жилья
 
 adFormNode.addEventListener('change', (evt) => {
   const { name, value } = evt.target;
@@ -66,14 +46,17 @@ adFormNode.addEventListener('change', (evt) => {
       priceNode.placeholder = price;
       break;
     }
-    case timeInNode.name: {
-      timeInNode.value = value;
-      timeOutNode.value = value;
-      break;
-    }
+    case timeInNode.name:
     case timeOutNode.name: {
       timeOutNode.value = value;
       timeInNode.value = value;
+      break;
+    }
+    case roomNumberNode.name:
+    case capacityNode.name: {
+      const roomNumber = roomNumberNode.value;
+      const capacityNumber = parseInt(capacityNode.value, 10);
+      capacityNode.setCustomValidity(roomsToCapacities[roomNumber].includes(capacityNumber) ? '' : 'Количество гостей больше чем комнат');
       break;
     }
   }
